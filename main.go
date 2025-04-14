@@ -40,8 +40,17 @@ func increment(x *int) {
 }
 
 func birthday(pointerAge *int) { // pointer, denoted with an asterisk
+	// print(pointerAge)
+	// print(*pointerAge)
+
+	//string format
+	fmt.Printf("The pointer is %v and the value is %v\n", pointerAge, *pointerAge) // expecting int: %i (error), string: %s, any: %v
+
+
+
 	*pointerAge = *pointerAge + 1
 	//age ++ // does not work
+
 }
 
 
@@ -124,13 +133,17 @@ func main()  {
 	data.ShowOutputFunc() // from data package
 
 	// Collections, arrays, in collections.go
+	// valnum := 0
+	var valnum int = 0
+	increment(&valnum)
+	fmt.Println(valnum)
 
 
 	//Pointers
 	age := 22
-	birthday(&age) // prefix of & for pointers, cloning the value, passing it as a copy, incrementing the copy not the variable
+	birthday(&age) // prefix of & for pointers, cloning the value, passing it as a copy, incrementing the copy not the variable. Getting the adress of the pointer
 	fmt.Println(age)
-	fmt.Println(&age)
+	fmt.Println(&age) // memory adress of the age
 
 	//fmt.Printf()
 

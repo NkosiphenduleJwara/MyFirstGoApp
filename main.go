@@ -28,6 +28,23 @@ func calculateTax(price float32) (float32, float32) {
 	return price*0.9, price*0.02
 }
 
+func calculateTaxWithName(price float32) (stateTax float32, cityTax float32) {
+	stateTax = price*0.9
+	cityTax = price*0.02
+	return
+}
+
+//pointers
+func increment(x *int) {
+	*x++
+}
+
+func birthday(pointerAge *int) { // pointer, denoted with an asterisk
+	*pointerAge = *pointerAge + 1
+	//age ++ // does not work
+}
+
+
 // you need an entry point, because we are creating apps
 func main()  {
 	stateTax, cityTax := calculateTax(100) // create two variables on the fly
@@ -35,7 +52,14 @@ func main()  {
 	fmt.Println(stateTax, cityTax)
 	fmt.Println(tax1)
 
+	fmt.Println(addAndSubtract(2, 3))
+	fmt.Println(add(1,2))
 	println("Hello from a module")
+
+	fmt.Println(calculateTaxWithName(12))
+
+	//i := 1
+	//fmt.Println(increment(i))
 
 	printData()
 
@@ -99,7 +123,16 @@ func main()  {
 	fmt.Print()
 	data.ShowOutputFunc() // from data package
 
-	// Collections, arrays
+	// Collections, arrays, in collections.go
+
+
+	//Pointers
+	age := 22
+	birthday(&age) // prefix of & for pointers, cloning the value, passing it as a copy, incrementing the copy not the variable
+	fmt.Println(age)
+	fmt.Println(&age)
+
+	//fmt.Printf()
 
 	
 

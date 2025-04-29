@@ -43,6 +43,15 @@ func birthday(pointerAge *int) { // pointer, denoted with an asterisk
 	// print(pointerAge)
 	// print(*pointerAge)
 
+	if (*pointerAge>140) {
+		// panic goes up the callstack and there are ways to trap that panic
+		// closes app with a message, this is not how you do error management
+		panic("Too old to be true") // it is an inturruption aborting, like an exception
+
+
+
+	}
+
 	//string format
 	fmt.Printf("The pointer is %v and the value is %v\n", pointerAge, *pointerAge) // expecting int: %i (error), string: %s, any: %v
 
@@ -56,6 +65,20 @@ func birthday(pointerAge *int) { // pointer, denoted with an asterisk
 
 // you need an entry point, because we are creating apps
 func main()  {
+
+	// it is like LIFO
+	defer fmt.Println("Good ")
+	defer fmt.Println("Bye!!") //executes at the end, if defers the execution until the end of the function call is reached
+
+	/*
+	defer is best used when you will forget to do something, e.g opening and closing the database
+	typically you forget so you open it and (defer) close it immediately and defer the closing
+
+	defer works with panic(), if there is a panic it will execute your defers before closing the app
+	it honors your defers
+	*/
+
+
 	stateTax, cityTax := calculateTax(100) // create two variables on the fly
 	tax1, _ := calculateTax(200) // underscore means you don't need it, ignore it
 	fmt.Println(stateTax, cityTax)
